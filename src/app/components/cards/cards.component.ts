@@ -17,7 +17,6 @@ export class CardsComponent implements OnInit, AfterViewInit {
   loading: boolean = false;
   currentPage: number = 1;
   users: User[] = [];
-  obsever: IntersectionObserver;
 
   constructor(private apiService: ApiService, private router: Router) { }
 
