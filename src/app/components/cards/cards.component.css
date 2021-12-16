@@ -28,14 +28,11 @@
 
 .description {
   padding-left: 10px;
+  padding-top: 5px;
 }
 
 #name {
   font-weight: 700;
-}
-
-.lastContent {
-  height: 100px;
 }
 
 .spinner {

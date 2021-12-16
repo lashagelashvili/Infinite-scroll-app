@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container" appInfiniteScroll (loadMore)="getUsers()">
     <div class="users">
         <div class="user" *ngFor="let user of users; let i = index" #item>
-            <div class="userContent" (click)="onUserClick()">
+            <div class="userContent" (click)="onUserClick(i+1)">
                 <div class="image">
-                    <img id="image" [src]="user.imageUrl + '?v=' + i + 1" alt="">
+                    <img id="image" [src]="user.imageUrl" alt="">
                 </div>
                 <div class="description">
                     <p id="name">{{ user.prefix }} {{ user.name }} {{ user.lastName }}</p>
