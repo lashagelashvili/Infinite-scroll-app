@@ -1,0 +1,70 @@
+.container {
+  padding-top: 30px;
+  width: 1200px;
+  margin: auto;
+}
+
+.userDetails {
+  display: flex;
+  align-items: center;
+}
+
+.image {
+  height: 200px;
+}
+
+.info {
+  width: 100%;
+  margin-left: 10px;
+  min-height: 200px;
+}
+
+.address {
+  margin-left: 5px;
+  min-height: 200px;
+}
+
+.info p {
+  margin-top: 3px;
+}
+
+.history {
+  padding: 50px 20px;
+}
+
+.friendsH2 {
+  padding: 10px 20px;
+}
+
+.users {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-left: 10px;
+}
+
+.user {
+  width: 25%;
+  min-height: 280px;
+}
+
+#image {
+  width: 100%;
+}
+
+.userContent {
+  margin: 10px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: grey;
+  cursor: pointer;
+}
+
+.description {
+  padding-left: 10px;
+  padding-top: 15px;
+}
+
+#name {
+  font-weight: 700;
+}

@@ -1,1 +1,50 @@
-<p>user-details works!</p>
+<div class="container">
+    <div class="userDetails">
+        <div>
+            <img class="image" [src]="userDetails.imageUrl" alt="">
+        </div>
+        <div class="info">
+            <fieldset>
+                <legend>Info</legend>
+                <strong>{{ userDetails.prefix }} {{ userDetails.name }} {{ userDetails.lastName }}</strong>
+                <p>{{ userDetails.title }}</p>
+                <br>
+                <p>Email: {{ userDetails.email }}</p>
+                <p>Ip Address: {{ userDetails.ip }}</p>
+                <p>Ip Address: {{ userDetails.ip }}</p>
+                <p>Job Area: {{ userDetails.jobArea}}</p>
+                <p>Job Type: {{ userDetails.jobType}}</p>
+            </fieldset>
+        </div>
+        <div class="address">
+            <fieldset>
+                <legend>Address</legend>
+                <strong>{{ userDetails.company.name }} {{ userDetails.company.suffix }}</strong>
+                <p>City: {{ userDetails.address.city }}</p>
+                <p>Country: {{ userDetails.address.country }} </p>
+                <p>State: {{ userDetails.address.state }}</p>
+                <p>Street Address: {{ userDetails.address.streetAddress }}</p>
+                <p>ZIP: {{ userDetails.address.zipCode }}</p>
+            </fieldset>
+        </div>
+    </div>
+    <div class="history">
+        <a href="">{{ userDetails.prefix }} {{ userDetails.name }} {{ userDetails.lastName }}</a>
+    </div>
+    <h2 class="friendsH2">Friends:</h2>
+    <div class="friends" appInfiniteScroll (loadMore)="getFriends()">
+        <div class="users">
+            <div class="user" *ngFor="let friend of userFriends; let i = index" #item>
+                <div class="userContent">
+                    <div class="image">
+                        <img id="image" [src]="friend.imageUrl" alt="">
+                    </div>
+                    <div class="description">
+                        <p id="name">{{ friend.prefix }} {{ friend.name }} {{ friend.lastName }}</p>
+                        <p>{{ friend.title }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
