@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { InfiniteScrollDirective } from 'src/app/directives/infinite-scroll.directive';
 import { ApiService } from 'src/app/services/api.service';
@@ -18,12 +18,11 @@ export class UserDetailsComponent implements OnInit, AfterViewInit {
   routeSub: Subscription;
 
   userId: number;
-
   userDetails: UserDetails;
   userFriends: User[] = [];
   friendsPage = 1;
 
-  constructor(private apiService: ApiService, private route: ActivatedRoute) { }
+  constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.routeSub = this.route.params.subscribe(params => {
@@ -35,7 +34,7 @@ export class UserDetailsComponent implements OnInit, AfterViewInit {
   }
 
   getUserDetails() {
-    this.apiService.getUserDetails(this.userId).subscribe((data) => {
+    this.apiService.getUserDetails(this.userId).subscribe((data: UserDetails) => {
       this.userDetails = data;
       this.userDetails.imageUrl = this.userDetails.imageUrl + '?v=' + this.userId;
     })
@@ -55,4 +54,20 @@ export class UserDetailsComponent implements OnInit, AfterViewInit {
     this.directive.updateItems(this.items);
     // console.log(this.userFriends)
   }
+
+  onFriendClick(id: number) {
+    console.log(id)
+    this.router.navigateByUrl(`user/${id}`);
+    this.userId = id;
+    this.friendsPage = 1;
+    this.userFriends = [];
+    this.getUserDetails();
+    this.getFriends();
+    // this.directive.updateItems(this.items);
+    // this.route.params.subscribe(params => {
+    //   id = params['id'];
+    // })
+  }
+
+
 }
