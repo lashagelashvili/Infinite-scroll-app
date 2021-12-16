@@ -1,5 +1,6 @@
 <div class="container">
-    <div class="userDetails">
+    <div class="spinner" *ngIf="loadingUser"></div>
+    <div class="userDetails" *ngIf="userDetails">
         <div>
             <img class="image" [src]="userDetails.imageUrl" alt="">
         </div>
@@ -29,13 +30,19 @@
         </div>
     </div>
     <div class="history">
-        <a href="">{{ userDetails.prefix }} {{ userDetails.name }} {{ userDetails.lastName }}</a>
+        <a routerLink="/" class="breadcrumb">Home</a>
+        <span>></span>
+        <ng-container *ngFor="let breadCrumb of breadCrumbs; let i = index">
+            <a class="breadcrumb" [routerLink]="'/user/' + breadCrumb.id" (click)="onBreadCrumbClick(breadCrumb.id)">
+                {{ breadCrumb.fullname}}
+            </a>
+            <span *ngIf="i !== breadCrumbs.length - 1">></span>
+        </ng-container>
     </div>
     <h2 class="friendsH2">Friends:</h2>
     <div class="friends" appInfiniteScroll (loadMore)="getFriends()">
         <div class="users">
-            <div class="user" *ngFor="let friend of userFriends; let i = index" #item
-                (click)="onFriendClick(friend.id)">
+            <div class="user" *ngFor="let friend of userFriends; let i = index" #item (click)="onClick(friend.id)">
                 <div class="userContent">
                     <div class="image">
                         <img id="image" [src]="friend.imageUrl" alt="">
@@ -49,3 +56,4 @@
         </div>
     </div>
 </div>
+<div class="spinner" *ngIf="loadingFriends"></div>
