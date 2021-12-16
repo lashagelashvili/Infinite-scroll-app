@@ -1,6 +1,7 @@
 .user-details {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .image {
@@ -8,13 +9,14 @@
 }
 
 .info {
-  width: 100%;
+  flex-grow: 3;
   margin-left: 10px;
   min-height: 200px;
 }
 
 .address {
-  margin: 20px 10px;
+  margin: 0 5px;
+  flex: 1;
 }
 
 .info p {
