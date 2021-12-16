@@ -16,9 +16,7 @@ export class CardsComponent implements OnInit, AfterViewInit {
 
   loading: boolean = false;
   currentPage: number = 1;
-  userId: number = 1;
   users: User[] = [];
-  totalPages: number;
   obsever: IntersectionObserver;
 
   constructor(private apiService: ApiService, private router: Router) { }
@@ -35,13 +33,10 @@ export class CardsComponent implements OnInit, AfterViewInit {
     this.loading = true;
     this.apiService.getData(this.currentPage).subscribe((data: UserFriends) => {
       this.loading = false;
-      console.log(data)
       data.list.forEach((item: User) => {
-        item.imageUrl = item.imageUrl + '?v=' + this.userId;
-        this.userId++;
+        item.imageUrl = item.imageUrl + '?v=' + item.id;
         this.users.push(item);
       })
-      this.totalPages = data.pagination.total;
       this.currentPage++;
     })
   }
