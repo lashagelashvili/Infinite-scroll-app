@@ -4,7 +4,6 @@ import { AfterViewInit, EventEmitter, Directive, ElementRef, Input, OnInit, Outp
   selector: '[appInfiniteScroll]'
 })
 export class InfiniteScrollDirective implements OnInit, AfterViewInit {
-  // @Input() items: QueryList<ElementRef>;
   items: QueryList<ElementRef>;
 
   @Output() loadMore = new EventEmitter<any>();
