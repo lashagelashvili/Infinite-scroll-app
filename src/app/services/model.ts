@@ -19,26 +19,32 @@ export interface UserDetails {
     jobType: string;
     email: string;
     ip: string;
-    company: {
-        name: string;
-        suffix: string;
-    };
-    address: {
-        zipCode: string;
-        city: string;
-        streetAddress: string;
-        country: string;
-        state: string;
-    }
+    company: Company;
+    address: Address;
 }
 
 export interface UserFriends {
     list: User[];
-    pagination: {
-        current: number;
-        nextPage: number | null;
-        pageSize: number;
-        previousPage: number | null;
-        total: number;
-    }
+    pagination: Pagination;
+}
+
+export interface Address {
+    zipCode: string;
+    city: string;
+    streetAddress: string;
+    country: string;
+    state: string;
+}
+
+export interface Company {
+    name: string;
+    suffix: string;
+}
+
+export interface Pagination {
+    current: number;
+    nextPage: number | null;
+    pageSize: number;
+    previousPage: number | null;
+    total: number;
 }
